@@ -28,11 +28,11 @@ if [ ! -z "${EXTRA_CONFIG}" ]; then
 fi
 
 echo "*** Generating ${KERNEL_NAME} kernel defconfig..."
-rm -f ${DEFCONFIG_DIR}/${KERNEL_DEFCONFIG}
-cp -f ${DEFCONFIG_DIR}/${ORIG_DEFCONFIG} ${DEFCONFIG_DIR}/${KERNEL_DEFCONFIG}
+rm -f ${DEFCONFIG_DIR}/$${KERNEL_NAME}_zefiescripts_defconfig
+cp -f ${DEFCONFIG_DIR}/${KERNEL_DEFCONFIG} ${DEFCONFIG_DIR}/${KERNEL_NAME}_zefiescripts_defconfig
 
 if [ ! -z "${CONFIG}" ]; then
-	echo "${CONFIG}" >> ${DEFCONFIG_DIR}/${KERNEL_DEFCONFIG}
+	echo "${CONFIG}" >> ${DEFCONFIG_DIR}/${KERNEL_NAME}_zefiescripts_defconfig
 fi
 
 make -C .zefie/lz4demo clean > /dev/null 2>&1

@@ -3,7 +3,7 @@
 
 ## AnyKernel setup
 # EDIFY properties
-kernel.string="%NAME% kernel for %MANU% %MODEL% by zefie"
+kernel.string="%NAME% kernel for %MANU% %MODEL% by %KERNELDEV%"
 do.devicecheck=1
 do.modules=0 # we will do it ourself.
 do.cleanup=1
@@ -26,8 +26,9 @@ force_seandroid=1;
 ## zefie kernel info
 
 ui_print " "
-ui_print "Kernel Name: %NAME%"
 ui_print "Kernel Device: %MANU% %MODEL% (%DEVMODEL%)"
+ui_print "Kernel Name: %NAME%"
+ui_print "Kernel Maintainer: %KERNELDEV%
 ui_print "Kernel Version: %VERSION%"
 ui_print "Toolchain: %TOOLCHAIN_VERSION%"
 ui_print " "
