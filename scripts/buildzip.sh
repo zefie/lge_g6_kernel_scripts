@@ -110,7 +110,7 @@ cp "${KERNEL_IMAGE}" "${TMPDIR}/zImage"
 #echo " * Generating QCDT..."
 #build/scripts/dtbTool/dtbTool -o "${TMPDIR}/dtb" -d build/scripts/dtc/dtc build/arch/arm64/boot/dts/ 2>&1 >> "${OUTDIR}/buildzip.log"
 
-OUTFILE="boot_kernel_$(date --utc +%Y.%m.%d)_${KVER}_us997_${ANDROID_TARGET}_${USER}.zip"
+OUTFILE="boot_${KERNEL_MANU}-${KERNEL_DEVMODEL}_${KVER}_$(date --utc +%Y.%m.%d)_${ANDROID_TARGET}_${KERNEL_DEVNAME}.zip"
 
 if [ -f "${OUTDIR}/${OUTFILE}" ]; then
 	rm -f "${OUTDIR}/${OUTFILE}"
