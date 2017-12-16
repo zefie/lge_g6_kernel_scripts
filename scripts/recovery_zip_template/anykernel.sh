@@ -28,7 +28,7 @@ force_seandroid=1;
 ui_print " "
 ui_print "Kernel Device: %MANU% %MODEL% (%DEVMODEL%)"
 ui_print "Kernel Name: %NAME%"
-ui_print "Kernel Maintainer: %KERNELDEV%
+ui_print "Kernel Maintainer: %KERNELDEV%"
 ui_print "Kernel Version: %VERSION%"
 ui_print "Toolchain: %TOOLCHAIN_VERSION%"
 ui_print " "
