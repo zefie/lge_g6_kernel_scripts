@@ -2,7 +2,7 @@
 source .zefie/scripts/buildenv.sh
 DEFCONFIG_DIR="arch/${ARCH}/configs"
 
-if [ ! -f "${KERNEL_NAME}_zefiescripts_defconfig" ]; then
+if [ ! -f "${DEFCONFIG_DIR}/${KERNEL_NAME}_zefiescripts_defconfig" ]; then
         echo "Could not find the kernel config. Did you prepare first?"
         echo ""
         echo "Try the following:"
