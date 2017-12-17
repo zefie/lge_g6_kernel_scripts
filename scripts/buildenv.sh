@@ -37,6 +37,18 @@ fi
 
 export CROSS_COMPILE="${TOOLCHAIN}"
 
+# Presets
+if [ ! -z "${PRESET}" ]; then
+	if [ "${PRESET}" == "US997" ]; then
+		export KERNEL_DEVMODEL="US997"
+		export KERNEL_DEFCONFIG="lucye_nao_us-perf_defconfig"
+	fi
+	if [ "${PRESET}" == "H870" ]; then
+		export KERNEL_DEVMODEL="H870"
+		export KERNEL_DEFCONFIG="lucye_global_com-perf_defconfig"
+	fi
+fi
+
 if [ "$(basename $0)" == "buildenv.sh" ]; then
 	if [ ! -z "$1" ]; then
 		$@
