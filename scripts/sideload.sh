@@ -1,7 +1,7 @@
 #!/bin/bash
 source .zefie/scripts/buildenv.sh
 
-LATEST=$(ls -1t build/out/${KERNEL_NAME}_kernel*.zip | head -n1)
+LATEST=$(ls -1t build/out/boot_${KERNEL_MANU}-${KERNEL_DEVMODEL}*.zip | head -n1)
 if [ -f "${LATEST}" ]; then
 	adb sideload "${LATEST}"
 else
