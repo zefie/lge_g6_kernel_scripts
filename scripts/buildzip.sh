@@ -68,6 +68,7 @@ cp -rfv .zefie/scripts/recovery_zip_template/* "${TMPDIR}" >> "${LOGFIL}"
 find "${TMPDIR}" -name "placeholder" -exec rm {} +
 echo " * Patching template ..."
 MODEL_WHITELIST=$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]');
+
 sed -i -e 's/\%MODEL_WHITELIST\%/'"${MODEL_WHITELIST}"'/' "${TMPDIR}/anykernel.sh"
 sed -i -e 's/\%KERNELDEV\%/'"${KERNEL_DEVNAME}"'/' "${TMPDIR}/anykernel.sh"
 sed -i -e 's/\%NAME\%/'"${KERNEL_NAME}"'/' "${TMPDIR}/anykernel.sh"

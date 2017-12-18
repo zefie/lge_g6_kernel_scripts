@@ -2,7 +2,7 @@
 # Update this and uncomment it
 
 #export TOOLCHAIN="/home/zefie/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
-export KERNEL_NAME="melina" # please change from melina for custom builds
+export KERNEL_NAME="Melina" # please change from Melina for custom builds
 export KERNEL_DEVNAME="${USER}" # can be normal name, defaults to linux username ;)
 
 export ANDROID_TARGET="STOCK" # Could be Lineage-14.0, or whatever. Just for zip name.
@@ -11,6 +11,7 @@ export KERNEL_BUILDDIR="build" # A subdirectory in this repo that is in .gitigno
 # These can be overridden by the env, using vars that replace DEFAULT_ with KERNEL_, ex: KERNEL_DEFCONFIG
 export DEFAULT_MANU="LG" # for zip filename
 export DEFAULT_MODEL="G6" # for zip filename
+
 export DEFAULT_DEVMODEL="US997" # for zip filename, and anykernel whitelist (converted to lowercase for whitelist)
 export DEFAULT_DEFCONFIG="lucye_nao_us-perf_defconfig" # device, check your build fingerprint
 
@@ -26,6 +27,7 @@ ZEFIE_TC_VER="6.x"
 export PATH="${PWD}/.zefie/lz4demo:${PATH}"
 export ARCH="arm64"
 export KERNEL_COMPRESSION_SUFFIX="lz4"
+export KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"
 
 # Allow env override
 if [ -z "${TC_NAME}" ]; then export TC_NAME="${ZEFIE_TC_NAME}"; fi
