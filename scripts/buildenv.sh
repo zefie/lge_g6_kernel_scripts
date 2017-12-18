@@ -1,7 +1,7 @@
 #!/bin/bash
 # Update this and uncomment it
 
-#export TOOLCHAIN="/home/zefie/dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
+#export TOOLCHAIN="/home/zefie/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
 export KERNEL_NAME="melina" # please change from melina for custom builds
 export KERNEL_DEVNAME="${USER}" # can be normal name, defaults to linux username ;)
 
@@ -37,8 +37,8 @@ if [ -z "${KERNEL_DEVMODEL}" ]; then export KERNEL_DEVMODEL="${DEFAULT_DEVMODEL}
 if [ -z "${KERNEL_DEFCONFIG}" ]; then export KERNEL_DEFCONFIG="${DEFAULT_DEFCONFIG}"; fi
 
 if [ ${KERNEL_ZEFIE_TOOLCHAIN_LAYOUT} -eq 1 ]; then
-	# Example toolchain path: /home/zefie/dev/toolchains/available/uber_aarch64-linux-android-6.x
-	TC_ROOT="/home/${USER}/dev/toolchains/available"
+	# Example toolchain path: /home/zefie/g6dev/toolchains/available/uber_aarch64-linux-android-6.x
+	TC_ROOT="/home/${USER}/g6dev/toolchains/available"
 	export TOOLCHAIN="${TC_ROOT}/${TC_NAME}_${TC_TYPE}-${TC_VER}/bin/${TC_TYPE}-"
 fi
 
