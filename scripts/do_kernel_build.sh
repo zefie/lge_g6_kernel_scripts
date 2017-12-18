@@ -1,7 +1,17 @@
 LG_OUT_DIRECTORY="../lg_out"
 
 if [ ! -z "${1}" ]; then
-	export KERNEL_DEVMODEL="${1}"
+	export KERNEL_DEVMODEL="$(echo "${1}" | tr '[:lower:]' '[:upper:]')"
+
+	# TODO: An list/array of models
+
+	if [ "${KERNEL_DEVMODEL}" != "US997" ] &&
+	   [ "${KERNEL_DEVMODEL}" != "H870" ]; then
+		echo "Error: Unknown model";
+		echo "This script supports: US997 H870";
+		exit 1
+	fi
+
 	if [ ! -z "${2}" ]; then
 		export KERNEL_DEFCONFIG="${2}_defconfig"
 	fi
