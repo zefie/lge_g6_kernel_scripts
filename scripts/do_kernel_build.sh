@@ -39,6 +39,7 @@ if [ ! -z "${1}" ]; then
 	fi
 	cp build/out/buildzip.log "${ZIPLOGD}"
 	ZIPNAME=$(tail -n3 "${ZIPLOGD}" | grep Generated | cut -d' ' -f2 | rev | cut -d'/' -f1 | rev)
+	cp "build/out/${ZIPNAME}" "${LG_OUT_DIRECTORY}"/
 else
 	echo "Usage: ${0} MODEL [conf]"
 	exit 1
