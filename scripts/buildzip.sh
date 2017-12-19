@@ -64,10 +64,11 @@ echo "*** Kernel Version: ${KVER}" >> "${LOGFIL}"
 rm -rf "${TMPDIR}"
 mkdir -p "${TMPDIR}"
 echo " * Copying template to build directory"
-cp -rfv .zefie/scripts/recovery_zip_template/* "${TMPDIR}" >> "${LOGFIL}"
+cp -rfv .zefie/recovery_zip_template/* "${TMPDIR}" >> "${LOGFIL}"
 find "${TMPDIR}" -name "placeholder" -exec rm {} +
 echo " * Patching template ..."
-MODEL_WHITELIST=$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]');
+
+MODEL_WHITELIST="${KERNEL_DEVMODEL_LOWER}"
 
 sed -i -e 's/\%MODEL_WHITELIST\%/'"${MODEL_WHITELIST}"'/' "${TMPDIR}/anykernel.sh"
 sed -i -e 's/\%KERNELDEV\%/'"${KERNEL_DEVNAME}"'/' "${TMPDIR}/anykernel.sh"

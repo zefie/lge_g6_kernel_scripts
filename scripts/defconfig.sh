@@ -2,13 +2,10 @@
 source .zefie/scripts/buildenv.sh
 DEFCONFIG_DIR="arch/${ARCH}/configs"
 
-if [ ! -f "${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}_zefiescripts_defconfig" ]; then
-        echo "Could not find the kernel config. Did you prepare first?"
-        echo ""
-        echo "Try the following:"
-        echo ".zefie/scripts/prepare.sh"
-        echo ".zefie/scripts/defconfig.sh"
-	exit 1;
+if [ ! -f "${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}_${KERNEL_DEVMODEL_LOWER}_defconfig" ]; then
+	.zefie/scripts/create_defconfigs.sh
 fi
-.zefie/scripts/make.sh ${KERNEL_NAME_LOWER}_zefiescripts_defconfig
+DEFCONFIG=${KERNEL_NAME_LOWER}_${KERNEL_DEVMODEL_LOWER}_defconfig
+echo "Using ${DEFCONFIG}..."
+.zefie/scripts/make.sh ${DEFCONFIG}
 exit $?
