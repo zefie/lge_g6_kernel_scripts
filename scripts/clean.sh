@@ -13,7 +13,7 @@ if [ $RC -ne 0 ]; then
 	echo "Error doing kernel mrproper."
 	exit $RC
 fi
-rm -f "${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}"_*_"defconfig"
+rm -f "${DEFCONFIG_DIR}/"${KERNEL_NAME_LOWER}_*_defconfig
 .zefie/scripts/defconfig.sh
 RC=$?
 if [ $RC -ne 0 ]; then

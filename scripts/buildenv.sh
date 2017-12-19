@@ -27,6 +27,7 @@ export PATH="${PWD}/.zefie/lz4demo:${PATH}"
 export ARCH="arm64"
 export KERNEL_COMPRESSION_SUFFIX="gz"
 export KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"
+export DEFCONFIG_DIR="arch/${ARCH}/configs"
 
 # Allow env override
 if [ -z "${TC_NAME}" ]; then export TC_NAME="${ZEFIE_TC_NAME}"; fi

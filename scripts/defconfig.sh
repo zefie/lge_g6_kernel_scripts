@@ -1,6 +1,5 @@
 #!/bin/bash
 source .zefie/scripts/buildenv.sh
-DEFCONFIG_DIR="arch/${ARCH}/configs"
 
 if [ ! -f "${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}_${KERNEL_DEVMODEL_LOWER}_defconfig" ]; then
 	.zefie/scripts/create_defconfigs.sh
