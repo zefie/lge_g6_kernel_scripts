@@ -19,7 +19,7 @@ EOM
 if [ ! -z "${KERNEL_RECOVERY}" ]; then
 read -r -d '' EXTRA_CONFIG << EOM
 # exFAT built in for recovery kernel
-EXFAT_STATUS=y
+CONFIG_EXFAT_FS=y
 EOM
 fi
 
