@@ -9,12 +9,12 @@ function z_reset_git {
 	rm -f .config .config.old
 	rm -rf "${KERNEL_BUILDDIR}/"*
 	git reset --hard
+	exit $?
 }
 
 if [ -d ".git" ]; then
 	if [ ! -z "${FORCE_RESET}" ]; then
 		z_reset_git
-		exit
 	fi
 
 	if git diff-index --name-only HEAD | grep -qv "^scripts/package"; then

@@ -139,6 +139,7 @@ if [ -f "${OUTDIR}/${OUTFILE}" ]; then
 else
 	echo "Could not create flashable zip. See above for possible error messages."
 	echo "Error creating zip..." >> "${LOGFIL}"
+	exit 1
 fi
 echo "*** Ending buildzip: $(date)" >> "${LOGFIL}"
 echo "" >> "${LOGFIL}"

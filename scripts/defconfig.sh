@@ -11,3 +11,4 @@ if [ ! -f "${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}_zefiescripts_defconfig" ]; then
 	exit 1;
 fi
 .zefie/scripts/make.sh ${KERNEL_NAME_LOWER}_zefiescripts_defconfig
+exit $?
