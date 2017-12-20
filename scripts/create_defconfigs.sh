@@ -34,7 +34,11 @@ for m in ${SUPPORTED_MODELS}; do
 	echo "*** Generating ${KERNEL_NAME}_${DEVMODEL_LOWER} kernel defconfigs..."
 	rm -f "${TARGET_FILE}"
 	cp -f "${DEFCONFIG_DIR}/${ORIG_DEFCONFIG}" "${TARGET_FILE}"
-	echo "CONFIG_LOCALVERSION=\"-${KERNEL_NAME_LOWER}\"" >> "${TARGET_FILE}"
+	if [ -z "${KERNEL_RECOVERY}" ]; then
+		echo "CONFIG_LOCALVERSION=\"-${KERNEL_NAME_LOWER}\"" >> "${TARGET_FILE}"
+	else
+		echo "CONFIG_LOCALVERSION=\"-${KERNEL_NAME_LOWER}-recovery\"" >> "${TARGET_FILE}"
+	fi
 	cat "${DEFCONFIG_DIR}/melina_common_subconfig" >> "${TARGET_FILE}"
 	if [ -f "${DEFCONFIG_DIR}/melina_${DEVMODEL_LOWER}_subconfig" ]; then
 		cat "${DEFCONFIG_DIR}/melina_${DEVMODEL_LOWER}_subconfig" >> "${TARGET_FILE}"
