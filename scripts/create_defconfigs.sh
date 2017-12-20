@@ -20,6 +20,11 @@ if [ ! -z "${KERNEL_RECOVERY}" ]; then
 read -r -d '' EXTRA_CONFIG << EOM
 # exFAT built in for recovery kernel
 CONFIG_EXFAT_FS=y
+CONFIG_EXFAT_DELAYED_SYNC=n
+
+# NTFS read only support for recovery kernel
+CONFIG_NTFS_FS=y
+
 EOM
 fi
 
