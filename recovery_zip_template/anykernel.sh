@@ -34,11 +34,29 @@ ui_print "Toolchain: %TOOLCHAIN_VERSION%"
 ui_print " "
 
 ## AnyKernel install
+
+# Dump initrd
 dump_boot;
+
+# remove /sbin/rctd if it exists
+if [ -f "$ramdisk/sbin/rctd" ]; then
+	ui_print "Removing /sbin/rctd..."
+	rm -f "$ramdisk/sbin/rctd"
+fi
+
+if [ -f "$ramdisk/init.lge.rc" ]; then
+	if [ "$(grep /sbin/rctd $ramdisk/init.lge.rc | wc -l)" -gt "0" ]; then
+		ui_print "Removing rctd service from init.lge.rc..."
+		cat $ramdisk/init.lge.rc | sed -e '/\/sbin\/rctd/,+4d' > $ramdisk/init.lge.rc.new
+		mv $ramdisk/init.lge.rc.new $ramdisk/init.lge.rc
+	fi
+fi
+
+# write new boot
 write_boot;
 
 # Manual module install
-ui_print "Pushing modules...";
+ui_print "Installing modules...";
 mount -o rw,remount -t auto /system;
 
 rm -rf /system/lib/modules
