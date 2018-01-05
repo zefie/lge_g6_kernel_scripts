@@ -25,7 +25,6 @@ ZEFIE_TC_VER="6.x"
 export SUPPORTED_MODELS="US997 H870"
 export PATH="${PWD}/.zefie/lz4demo:${PATH}"
 export ARCH="arm64"
-export KERNEL_COMPRESSION_SUFFIX="gz"
 export KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"
 export DEFCONFIG_DIR="arch/${ARCH}/configs"
 
