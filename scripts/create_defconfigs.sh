@@ -18,10 +18,6 @@ EOM
 
 if [ ! -z "${KERNEL_RECOVERY}" ]; then
 read -r -d '' EXTRA_CONFIG << EOM
-# exFAT built in for recovery kernel
-CONFIG_EXFAT_FS=y
-CONFIG_EXFAT_DELAYED_SYNC=n
-
 # NTFS read only support for recovery kernel
 CONFIG_NTFS_FS=y
 
@@ -48,4 +44,9 @@ for m in ${SUPPORTED_MODELS}; do
 		echo "${EXTRA_CONFIG}" >> "${TARGET_FILE}"
 	fi
 	echo "${CUSTOM_CONFIG}" >> "${TARGET_FILE}"
+
+	if [ ! -z "${KERNEL_RECOVERY}" ]; then
+		# Make all modules built-in for recovery
+		sed -i -e 's/\=m/\=y/g' "${TARGET_FILE}"
+	fi
 done
