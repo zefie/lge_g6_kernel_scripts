@@ -1,7 +1,12 @@
 #!/bin/bash
 # Update this and uncomment it
 
-#export TOOLCHAIN="/home/zefie/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
+if [ -z "${WORKSPACE}" ]; then
+	export TOOLCHAIN="/home/zefie/dev/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
+else
+	export TOOLCHAIN="${WORKSPACE}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+fi
+
 export KERNEL_NAME="Melina" # please change from Melina for custom builds
 export KERNEL_DEVNAME="${USER}" # can be normal name, defaults to linux username ;)
 
@@ -12,12 +17,6 @@ export KERNEL_BUILDDIR="build" # A subdirectory in this repo that is in .gitigno
 export DEFAULT_MANU="LG" # for zip filename
 export DEFAULT_MODEL="G6" # for zip filename
 export DEFAULT_DEVMODEL="US997" # for zip filename, and anykernel whitelist (converted to lowercase for whitelist)
-
-# Zefie Toolchain Layout
-KERNEL_ZEFIE_TOOLCHAIN_LAYOUT=1 # You probably want this as 0
-ZEFIE_TC_NAME="uber"
-ZEFIE_TC_TYPE="aarch64-linux-android"
-ZEFIE_TC_VER="6.x"
 
 
 # Do not edit below this line
@@ -36,12 +35,6 @@ if [ -z "${KERNEL_MANU}" ]; then export KERNEL_MANU="${DEFAULT_MANU}"; fi
 if [ -z "${KERNEL_MODEL}" ]; then export KERNEL_MODEL="${DEFAULT_MODEL}"; fi
 if [ -z "${KERNEL_DEVMODEL}" ]; then export KERNEL_DEVMODEL="${DEFAULT_DEVMODEL}"; fi
 export KERNEL_DEVMODEL_LOWER="$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]')"
-
-if [ ${KERNEL_ZEFIE_TOOLCHAIN_LAYOUT} -eq 1 ]; then
-	# Example toolchain path: /home/zefie/g6dev/toolchains/available/uber_aarch64-linux-android-6.x
-	TC_ROOT="/home/${USER}/g6dev/toolchains/available"
-	export TOOLCHAIN="${TC_ROOT}/${TC_NAME}_${TC_TYPE}-${TC_VER}/bin/${TC_TYPE}-"
-fi
 
 export CROSS_COMPILE="${TOOLCHAIN}"
 

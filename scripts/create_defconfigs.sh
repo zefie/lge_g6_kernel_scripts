@@ -13,7 +13,6 @@ read -r -d '' CUSTOM_CONFIG << EOM
 
 EOM
 
-
 ### Do not edit below this line ###
 
 if [ ! -z "${KERNEL_RECOVERY}" ]; then
@@ -46,7 +45,7 @@ for m in ${SUPPORTED_MODELS}; do
 	echo "${CUSTOM_CONFIG}" >> "${TARGET_FILE}"
 
 	if [ ! -z "${KERNEL_RECOVERY}" ]; then
-		# Make all modules built-in for recovery
+		sed -i -e '/CONFIG_MODULE/d' "${TARGET_FILE}"
 		sed -i -e 's/\=m/\=y/g' "${TARGET_FILE}"
 	fi
 done
