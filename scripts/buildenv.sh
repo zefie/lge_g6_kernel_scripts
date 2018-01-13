@@ -1,10 +1,10 @@
 #!/bin/bash
-# Update this and uncomment it
+export TOOLCHAIN="/home/zefie/dev/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
 
 if [ -z "${WORKSPACE}" ]; then
-	export TOOLCHAIN="/home/zefie/dev/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
-else
-	export TOOLCHAIN="${WORKSPACE}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+	if [ "${JOB_BASE_NAME}" != "lg-g6-kernel" ]; then
+		export TOOLCHAIN="${WORKSPACE}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+	fi
 fi
 
 export KERNEL_NAME="Melina" # please change from Melina for custom builds
