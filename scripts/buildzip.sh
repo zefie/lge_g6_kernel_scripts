@@ -7,7 +7,7 @@ MODDIR="${TMPDIR}/modules"
 LOGFIL="${OUTDIR}/buildzip.log"
 MODULES=1
 
-KERNEL_IMAGE="build/arch/${ARCH}/boot/Image.${KERNEL_COMPRESSION_SUFFIX}-dtb"
+KERNEL_IMAGE="build/arch/${ARCH}/boot/Image.gz-dtb"
 
 if [ ! -f "${KERNEL_IMAGE}" ]; then
 	echo "Could not find binary kernel. Did you build it?";
