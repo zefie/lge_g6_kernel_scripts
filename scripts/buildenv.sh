@@ -1,7 +1,7 @@
 #!/bin/bash
 export TOOLCHAIN="/home/zefie/dev/g6dev/toolchains/uber/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
 
-if [ -z "${WORKSPACE}" ]; then
+if [ ! -z "${WORKSPACE}" ]; then
 	if [ "${JOB_BASE_NAME}" != "lg-g6-kernel" ]; then
 		export TOOLCHAIN="${WORKSPACE}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
 	fi
