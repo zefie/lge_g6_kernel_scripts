@@ -52,6 +52,12 @@ if [ -f "$ramdisk/init.lge.rc" ]; then
 	fi
 fi
 
+if [ "$(cat $ramdisk/fstab.lucye | grep forceencrypt | wc -l)" -gt "0" ]; then
+	ui_print "Disabling forceencrypt..."
+	cat $ramdisk/fstab.lucye | sed -e 's/forceencrypt/encryptable/' > $ramdisk/fstab.lucye.new
+	mv $ramdisk/fstab.lucye.new $ramdisk/fstab.lucye
+fi
+
 # write new boot
 write_boot;
 
