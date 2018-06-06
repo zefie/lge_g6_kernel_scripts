@@ -19,7 +19,7 @@ if [ ! -z "${KERNEL_RECOVERY}" ]; then
 read -r -d '' EXTRA_CONFIG << EOM
 # NTFS read only support for recovery kernel
 CONFIG_NTFS_FS=y
-
+CONFIG_SECURITY_SELINUX_DEVELOP=y
 EOM
 fi
 
