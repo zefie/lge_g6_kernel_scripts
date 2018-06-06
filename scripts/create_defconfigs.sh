@@ -2,7 +2,8 @@
 source .zefie/scripts/buildenv.sh
 
 DEFCONFIG_DIR="arch/${ARCH}/configs"
-ORIG_DEFCONFIG="lucye_nao_us-perf_defconfig" # Yes even for variants. We override with melina_model_subconfig
+export ORIG_DEFCONFIG_US997="lucye_nao_us-perf_defconfig"
+export ORIG_DEFCONFIG_H870="lucye_global_com-perf_defconfig"
 
 # If you would like to add custom config easily without breaking melina build system, add it here then
 # run this script to get your custom defconfig with melina additions.
@@ -25,6 +26,9 @@ fi
 
 for m in ${SUPPORTED_MODELS}; do
 	DEVMODEL_LOWER="$(echo "$m" | tr '[:upper:]' '[:lower:]')"
+	DEVMODEL_UPPER="$(echo "$m" | tr '[:lower:]' '[:upper:]')"
+	ORIG_DEFCONFIG=$(env | grep "$(echo -n 'ORIG_DEFCONFIG_'${DEVMODEL_UPPER})" | cut -d'=' -f2)
+
 	TARGET_FILE="${DEFCONFIG_DIR}/${KERNEL_NAME_LOWER}_${DEVMODEL_LOWER}_defconfig"
 	echo "*** Generating ${KERNEL_NAME}_${DEVMODEL_LOWER} kernel defconfigs..."
 	rm -f "${TARGET_FILE}"
