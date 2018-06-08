@@ -104,7 +104,7 @@ if [ ${MODULES} -eq 1 ]; then
 			echo " * [FOUND] ${mout}"
 			cp -f "${FILE}" "${MODDIR}/${mout}"
 		else
-			echo " * [MISSN] ${mout}" > /dev/stderr
+			echo " * [MISSN] ${mout}" >> /dev/stderr
 		fi
 	done;
 	chmod 644 "${MODDIR}/"*
