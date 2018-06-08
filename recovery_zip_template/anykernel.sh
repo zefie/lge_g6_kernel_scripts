@@ -40,22 +40,33 @@ dump_boot;
 
 # remove /sbin/rctd if it exists
 if [ -f "$ramdisk/sbin/rctd" ]; then
+	PATCHED=1
 	ui_print "Removing /sbin/rctd..."
 	rm -f "$ramdisk/sbin/rctd"
 fi
 
 if [ -f "$ramdisk/init.lge.rc" ]; then
 	if [ "$(grep /sbin/rctd $ramdisk/init.lge.rc | wc -l)" -gt "0" ]; then
+		PATCHED=1
 		ui_print "Removing rctd service from init.lge.rc..."
-		cat $ramdisk/init.lge.rc | sed -e '/\/sbin\/rctd/,+4d' > $ramdisk/init.lge.rc.new
-		mv $ramdisk/init.lge.rc.new $ramdisk/init.lge.rc
+		sed -ie '/\/sbin\/rctd/,+4d' "$ramdisk/init.lge.rc"
 	fi
 fi
 
-if [ "$(cat $ramdisk/fstab.lucye | grep forceencrypt | wc -l)" -gt "0" ]; then
-	ui_print "Disabling forceencrypt..."
-	cat $ramdisk/fstab.lucye | sed -e 's/forceencrypt/encryptable/' > $ramdisk/fstab.lucye.new
-	mv $ramdisk/fstab.lucye.new $ramdisk/fstab.lucye
+if [ -f "$ramdisk/fstab.lucye" ]; then
+	if [ "$(grep forceencrypt $ramdisk/fstab.lucye | wc -l)" -gt "0" ]; then
+		PATCHED=1
+		ui_print "Disabling forceencrypt..."
+		sed -ie 's/forceencrypt/encryptable/' "$ramdisk/fstab.lucye"
+	fi
+fi
+
+if [ -f "$ramdisk/init.rc" ]; then
+	if [ "$(grep /system/bin/install-recovery $ramdisk/init.rc | wc -l)" -gt "0" ]; then
+		PATCHED=1
+		ui_print "Removing custom recovery killer..."
+		sed -ie '/\/system\/bin\/install-recovery/,+2d' "$ramdisk/init.rc"
+	fi
 fi
 
 # write new boot
