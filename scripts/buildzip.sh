@@ -29,11 +29,12 @@ if [ ${MODULES} -eq 1 ]; then
 
 read -r -d '' INCLUDED_MODULES << INCLUDED
 ansi_cprng.ko
-bluetooth-power.ko
+backlight.ko
 br_netfilter.ko
 dummy_hcd.ko
 evbug.ko
 g_laf.ko
+general_bl.ko
 gspca_main.ko
 lcd.ko
 mausb-core.ko
@@ -42,11 +43,9 @@ mmc_block_test.ko
 mmc_test.ko
 rdbg.ko
 spidev.ko
-tcp_htcp.ko
-tcp_westwood.ko
 test-iosched.ko
-texfat.ko=exfat.ko
 ufs_test.ko
+wil6210.ko
 INCLUDED
 
 	if [ ! -z "${EXTRA_MODULES}" ]; then

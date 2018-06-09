@@ -76,11 +76,11 @@ write_boot;
 ui_print "Installing modules...";
 mount -o rw,remount -t auto /system;
 
-rm -rf /system/lib/modules
-mkdir -p /system/lib/modules
+rm -rf /system/vendor/lib/modules
+mkdir -p /system/vendor/lib/modules
 
-cp -rf /tmp/anykernel/modules/* /system/lib/modules/;
-set_perm_recursive 0 0 0755 0644 /system/lib/modules;
+cp -rf /tmp/anykernel/modules/* /system/vendor/lib/modules/;
+set_perm_recursive 0 0 0755 0644 /system/vendor/lib/modules;
 
 mount -o ro,remount -t auto /system;
 ## end install
