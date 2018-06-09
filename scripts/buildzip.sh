@@ -34,7 +34,7 @@ br_netfilter.ko
 dummy_hcd.ko
 evbug.ko
 g_laf.ko
-general_bl.ko
+general_bl.ko=generic_bl.ko
 gspca_main.ko
 lcd.ko
 mausb-core.ko
