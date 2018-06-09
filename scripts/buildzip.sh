@@ -81,7 +81,7 @@ sed -i -e 's/\%TOOLCHAIN_VERSION\%/'"${TCVER}"'/' "${TMPDIR}/anykernel.sh"
 if [ ${MODULES} -eq 1 ]; then
 	rm -rf "${TMPDIR}/_modtmp"
 	mkdir -p "${TMPDIR}/_modtmp"
-	.zefie/scripts/make.sh INSTALL_MOD_PATH="${TMPDIR}/_modtmp" modules_install 2>&1 >> "${LOGFIL}"
+	.zefie/scripts/make.sh INSTALL_MOD_PATH="${TMPDIR}/_modtmp" INSTALL_MOD_STRIP=1 modules_install 2>&1 >> "${LOGFIL}"
 
         # Rename exfat module for compatiblity (LG uses propritary Tuxera, we use open source)
 	for m in ${INCLUDED_MODULES}; do
