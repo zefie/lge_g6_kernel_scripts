@@ -14,7 +14,7 @@ if [ ! -z "${1}" ]; then
 
 	if [ ! -z "${SUPPORTED}" ]; then
 		echo "Error: Unknown model";
-		echo "This script supports: ${SUPPORTED}";
+		echo "This script supports: ${SUPPORTED_MODELS}";
 		exit 1
 	fi
 

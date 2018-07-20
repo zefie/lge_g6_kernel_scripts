@@ -42,6 +42,10 @@ for m in ${SUPPORTED_MODELS}; do
 	else
 		echo "CONFIG_LOCALVERSION=\"-${KERNEL_NAME_LOWER}-recovery\"" >> "${TARGET_FILE}"
 	fi
+
+	# you dont have to change this from melina, it won't show to the user.
+        # if you do, rename the files in arch/arm64/configs accordingly.
+
 	cat "${DEFCONFIG_DIR}/melina_common_subconfig" >> "${TARGET_FILE}"
 	if [ -f "${DEFCONFIG_DIR}/melina_${DEVMODEL_LOWER}_subconfig" ]; then
 		cat "${DEFCONFIG_DIR}/melina_${DEVMODEL_LOWER}_subconfig" >> "${TARGET_FILE}"
