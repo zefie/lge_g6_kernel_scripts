@@ -24,7 +24,7 @@ export DEFAULT_DEVMODEL="US997" # for zip filename, and anykernel whitelist (con
 
 # Do not edit below this line
 
-export SUPPORTED_MODELS="US997 H870"
+export SUPPORTED_MODELS="US997 H870 H872"
 export PATH="${PWD}/.zefie/lz4demo:${PATH}"
 export ARCH="arm64"
 export KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"

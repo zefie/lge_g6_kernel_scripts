@@ -4,6 +4,7 @@ source .zefie/scripts/buildenv.sh
 DEFCONFIG_DIR="arch/${ARCH}/configs"
 ORIG_DEFCONFIG_US997="lucye_nao_us-perf_defconfig"
 ORIG_DEFCONFIG_H870="lucye_global_com-perf_defconfig"
+ORIG_DEFCONFIG_H872="lucye_tmo_us-perf_defconfig"
 
 # If you would like to add custom config easily without breaking melina build system, add it here then
 # run this script to get your custom defconfig with melina additions.

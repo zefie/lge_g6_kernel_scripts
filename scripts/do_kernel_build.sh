@@ -14,7 +14,7 @@ if [ ! -z "${1}" ]; then
 
 	if [ ! -z "${SUPPORTED}" ]; then
 		echo "Error: Unknown model";
-		echo "This script supports: US997 H870";
+		echo "This script supports: ${SUPPORTED}";
 		exit 1
 	fi
 
