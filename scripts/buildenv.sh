@@ -6,8 +6,11 @@ export TOOLCHAIN32="/home/zefie/ubertc/out/arm-linux-androideabi-6.x/bin/arm-lin
 
 if [ ! -z "${WORKSPACE}" ]; then
 	# Custom for Jenkins integration
-	if [ "${JOB_BASE_NAME}" != "lg-g6-kernel" ]; then
-		export TOOLCHAIN="${WORKSPACE}/prebuilts/gcc/linux-x86/aarch64/aarch64-linux-android-4.9/bin/aarch64-linux-android-"
+	if [ "${JOB_BASE_NAME}" =!= "lg-g6-kernel" ]; then
+		# todo: fix inline
+	else
+		export TOOLCHAIN="${WORKSPACE}/ubertc/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
+		export TOOLCHAIN32="${WORKSPACE}/ubertc/arm-linux-androideabi-6.x/bin/arm-linux-androideabi-"
 	fi
 fi
 
