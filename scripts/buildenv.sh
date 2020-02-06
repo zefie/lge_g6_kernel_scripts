@@ -6,7 +6,7 @@ export TOOLCHAIN32="/home/zefie/ubertc/out/arm-linux-androideabi-6.x/bin/arm-lin
 
 if [ ! -z "${WORKSPACE}" ]; then
 	# Custom for Jenkins integration
-	if [ "${JOB_BASE_NAME}" =!= "lg-g6-kernel" ]; then
+	if [ "${JOB_BASE_NAME}" != "lg-g6-kernel" ]; then
 		# todo: fix inline
 		echo "not supported"
 		exit 1;
