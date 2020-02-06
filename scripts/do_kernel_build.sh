@@ -56,12 +56,8 @@ if [ ! -z "${1}" ]; then
 
 	ZIPNAME=$(find build/out/ -name "boot_*.zip" | rev | cut -d'/' -f1 | rev)
 
-	if [ -z "${WORKSPACE}" ]; then
-		cp build/out/buildzip.log "${ZIPLOGD}"
-		cp "build/out/${ZIPNAME}" "${LG_OUT_DIRECTORY}"/
-	else
-		cp "build/out/${ZIPNAME}" "${WORKSPACE}"/
-	fi
+	cp build/out/buildzip.log "${ZIPLOGD}"
+	cp "build/out/${ZIPNAME}" "${LG_OUT_DIRECTORY}"/
 else
 	echo "Usage: ${0} MODEL [conf]"
 	exit 1
