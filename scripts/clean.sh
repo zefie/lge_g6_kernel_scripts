@@ -1,5 +1,8 @@
 #!/bin/bash
 source .zefie/scripts/buildenv.sh
+if [ -z "${KERNEL_BUILDDIR}" ]; then
+	exit 1; # die before we destroy stuff
+fi
 rm -rf "${KERNEL_BUILDDIR}"/*
 .zefie/scripts/resetgit.sh
 RC=$?
