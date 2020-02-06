@@ -9,6 +9,7 @@ if [ ! -z "${1}" ]; then
 	for m in ${SUPPORTED_MODELS[@]}; do
 		if [ "${KERNEL_DEVMODEL}" == "$m" ]; then
 			SUPPORTED=1
+			break;
 		fi
 	done
 
