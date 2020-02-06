@@ -8,6 +8,8 @@ if [ ! -z "${WORKSPACE}" ]; then
 	# Custom for Jenkins integration
 	if [ "${JOB_BASE_NAME}" =!= "lg-g6-kernel" ]; then
 		# todo: fix inline
+		echo "not supported"
+		exit 1;
 	else
 		export TOOLCHAIN="${WORKSPACE}/ubertc/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
 		export TOOLCHAIN32="${WORKSPACE}/ubertc/arm-linux-androideabi-6.x/bin/arm-linux-androideabi-"
