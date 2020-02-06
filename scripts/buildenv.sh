@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # git clone https://github.com/zefie/binary_toolchains -b uber-6.x-x86_64-aarch64
-export TOOLCHAIN="/home/zefie/dev/g6dev/toolchains/available/main/bin/aarch64-linux-android-"
+export TOOLCHAIN="/home/zefie/ubertc/out/aarch64-linux-android-6.x/bin/aarch64-linux-android-"
+export TOOLCHAIN32="/home/zefie/ubertc/out/arm-linux-androideabi-6.x/bin/arm-linux-androideabi-"
 
 if [ ! -z "${WORKSPACE}" ]; then
 	# Custom for Jenkins integration
@@ -10,10 +11,10 @@ if [ ! -z "${WORKSPACE}" ]; then
 	fi
 fi
 
-export KERNEL_NAME="Melina" # please change from Melina for custom builds
+export KERNEL_NAME="MelinaReborn" # please change from Melina for custom builds
 export KERNEL_DEVNAME="${USER}" # can be normal name, defaults to linux username ;)
 
-export ANDROID_TARGET="STOCK" # Could be Lineage-14.0, or whatever. Just for zip name.
+export ANDROID_TARGET="AOSP" # Could be Lineage-14.0, or whatever. Just for zip name.
 export KERNEL_BUILDDIR="build" # A subdirectory in this repo that is in .gitignore and doesn't already exist. Best just leave it be.
 
 # These can be overridden by the env, using vars that replace DEFAULT_ with KERNEL_, ex: KERNEL_DEVMODEL
@@ -40,6 +41,7 @@ if [ -z "${KERNEL_DEVMODEL}" ]; then export KERNEL_DEVMODEL="${DEFAULT_DEVMODEL}
 export KERNEL_DEVMODEL_LOWER="$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]')"
 
 export CROSS_COMPILE="${TOOLCHAIN}"
+export CROSS_COMPILE_ARM32="${TOOLCHAIN32}"
 
 if [ "$(basename $0)" == "buildenv.sh" ]; then
 	if [ ! -z "$1" ]; then
