@@ -27,7 +27,7 @@ CONFIG_SECURITY_SELINUX_DEVELOP=y
 EOM
 fi
 
-for m in ${SUPPORTED_MODELS}; do
+for m in ${SUPPORTED_MODELS[@]}; do
 	DEVMODEL_LOWER="$(echo "$m" | tr '[:upper:]' '[:lower:]')"
 	DEVMODEL_UPPER="$(echo "$m" | tr '[:lower:]' '[:upper:]')"
 	ORIG_DEFCONFIG=$(echo -n 'ORIG_DEFCONFIG_'${DEVMODEL_UPPER})

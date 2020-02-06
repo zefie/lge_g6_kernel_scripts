@@ -7,7 +7,7 @@ function z_reset_git {
 		rm -rf "${f}"
 	done;
 	rm -f .config .config.old
-	rm -rf "${KERNEL_BUILDDIR}/"*
+	rm -rf "${KERNEL_BUILDDIR:?}/"*
 	git reset --hard
 	exit $?
 }

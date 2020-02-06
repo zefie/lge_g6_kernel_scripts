@@ -30,11 +30,12 @@ export DEFAULT_DEVMODEL="US997" # for zip filename, and anykernel whitelist (con
 
 # Do not edit below this line
 
-export SUPPORTED_MODELS="US997 H870 H872"
+export SUPPORTED_MODELS=("US997" "H870" "H872")
 export PATH="${PWD}/.zefie/lz4demo:${PATH}"
 export ARCH="arm64"
-export KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"
 export DEFCONFIG_DIR="arch/${ARCH}/configs"
+KERNEL_NAME_LOWER="$(echo "${KERNEL_NAME}" | tr '[:upper:]' '[:lower:]')"
+export KERNEL_NAME_LOWER
 
 # Allow env override
 if [ -z "${TC_NAME}" ]; then export TC_NAME="${ZEFIE_TC_NAME}"; fi
@@ -43,14 +44,15 @@ if [ -z "${TC_VER}" ]; then export TC_VER="${ZEFIE_TC_VER}"; fi
 if [ -z "${KERNEL_MANU}" ]; then export KERNEL_MANU="${DEFAULT_MANU}"; fi
 if [ -z "${KERNEL_MODEL}" ]; then export KERNEL_MODEL="${DEFAULT_MODEL}"; fi
 if [ -z "${KERNEL_DEVMODEL}" ]; then export KERNEL_DEVMODEL="${DEFAULT_DEVMODEL}"; fi
-export KERNEL_DEVMODEL_LOWER="$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]')"
+KERNEL_DEVMODEL_LOWER="$(echo "${KERNEL_DEVMODEL}" | tr '[:upper:]' '[:lower:]')"
+export KERNEL_DEVMODEL_LOWER
 
 export CROSS_COMPILE="${TOOLCHAIN}"
 export CROSS_COMPILE_ARM32="${TOOLCHAIN32}"
 
-if [ "$(basename $0)" == "buildenv.sh" ]; then
+if [ "$(basename "${0}")" == "buildenv.sh" ]; then
 	if [ ! -z "$1" ]; then
-		$@
+		"${@}"
 	fi
 fi
 

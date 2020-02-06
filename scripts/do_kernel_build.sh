@@ -6,7 +6,7 @@ if [ ! -z "${1}" ]; then
 
 	# TODO: An list/array of models
 
-	for m in ${SUPPORTED_MODELS}; do
+	for m in ${SUPPORTED_MODELS[@]}; do
 		if [ "${KERNEL_DEVMODEL}" == "$m" ]; then
 			SUPPORTED=1
 		fi
@@ -14,7 +14,7 @@ if [ ! -z "${1}" ]; then
 
 	if [ ! -z "${SUPPORTED}" ]; then
 		echo "Error: Unknown model (${1})";
-		echo "This script supports: ${SUPPORTED_MODELS}";
+		echo "This script supports: ${SUPPORTED_MODELS[*]}";
 		exit 1
 	fi
 
