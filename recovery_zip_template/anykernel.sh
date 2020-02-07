@@ -74,11 +74,28 @@ write_boot;
 
 # Manual module install
 ui_print "Installing modules...";
-mount -o rw,remount -t auto /system;
-
-rm -rf /system/lib/modules
-mkdir -p /system/lib/modules
-
+if `mount -o rw,remount -t auto /vendor`; then
+	ui_print "Detected Android Vendor Partition"
+	rm -rf /vendor/lib/modules
+	mkdir -p /vendor/lib/modules
+elif `mount -o rw,remount -t auto /system`; then
+	if [ -d "/system/vendor/lib/modules" ]; then
+		ui_print "Detected Android System-Root with Vendor-on-System"
+		rm -rf /system/vendor/lib/modules
+		mkdir -p /system/vendor/lib/modules
+	elif [ -d "/system/system/lib/modules" ]; then
+		ui_print "Detected Android System-Root without Vendor"
+		rm -rf /system/system/lib/modules
+		mkdir -p /system/system/lib/modules
+	elif [ -d "/system/lib/modules" ]; then
+		ui_print "Detected Classic Android System"
+		rm -rf /system/lib/modules
+		mkdir -p /system/lib/modules
+	fi
+else
+	ui_print "Could not install modules."
+	exit 1
+fi
 cp -rf /tmp/anykernel/modules/* /system/lib/modules/;
 set_perm_recursive 0 0 0755 0644 /system/lib/modules;
 
